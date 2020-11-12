@@ -71,11 +71,14 @@ function setupSquares(){
 				scoreDisplay.textContent = score;
 				localStorage.setItem('score', score);
 			} else {
-				this.style.background = "#232323";
-				messageDisplay.textContent = "Try Again"
-				score--;
-				scoreDisplay.textContent = score; 
-				localStorage.setItem('score', score);
+				if (this.getAttribute('data-clicked') === 'false'){
+					this.setAttribute('data-clicked','true');
+					this.style.background = "#232323";
+					messageDisplay.textContent = "Try Again"
+					score--;
+					scoreDisplay.textContent = score; 
+					localStorage.setItem('score', score);
+				}
 			}
 		} );
 	}
@@ -120,6 +123,8 @@ function reset(){
 		} else {
 			squares[i].style.display = "none";
 		}
+		//also reset data-clicked to false RT
+		squares[i].setAttribute('data-clicked','false');
 	}
 	h1.style.background = "steelblue";
 }

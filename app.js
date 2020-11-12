@@ -27,7 +27,7 @@ function init(){
 	setupSquares();
 	var lsScore = localStorage.getItem('score');
 	if( lsScore !== null ){
-		score = lsScore; 
+		score = Number(lsScore); 
 		scoreDisplay.textContent = score;
 	}
 	else {
@@ -65,7 +65,7 @@ function setupSquares(){
 				changeColors(clickedColor);
 				h1.style.background = clickedColor;
 				if(resetPressed){
-					score+=5; 
+					score += 5;
 					resetPressed = false;
 				}
 				scoreDisplay.textContent = score;

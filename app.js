@@ -11,6 +11,7 @@ var modeButtons = document.querySelectorAll(".mode");
 var score = 0; //initialize score to zero 
 var scoreDisplay = document.querySelector("#scoreDisplay"); 
 var resetPressed = true; 
+var winCount = 5;
 
 /* call initialization function */ 
 init();
@@ -65,7 +66,7 @@ function setupSquares(){
 				changeColors(clickedColor);
 				h1.style.background = clickedColor;
 				if(resetPressed){
-					score += 5;
+					score += winCount;
 					resetPressed = false;
 				}
 				scoreDisplay.textContent = score;
@@ -78,6 +79,8 @@ function setupSquares(){
 					score--;
 					scoreDisplay.textContent = score; 
 					localStorage.setItem('score', score);
+					//decrement win counter
+					winCount--;
 				}
 			}
 		} );
@@ -127,6 +130,8 @@ function reset(){
 		squares[i].setAttribute('data-clicked','false');
 	}
 	h1.style.background = "steelblue";
+	//reset win counter
+	winCount = 5;
 }
 
 /* when you click the reset button reset */ 

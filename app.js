@@ -71,17 +71,15 @@ function setupSquares(){
 				}
 				scoreDisplay.textContent = score;
 				localStorage.setItem('score', score);
-			} else {
-				if (this.getAttribute('data-clicked') === 'false'){
-					this.setAttribute('data-clicked','true');
-					this.style.background = "#232323";
-					messageDisplay.textContent = "Try Again"
-					score--;
-					scoreDisplay.textContent = score; 
-					localStorage.setItem('score', score);
-					//decrement win counter
-					winCount--;
-				}
+			} else if (this.getAttribute('data-clicked') === 'false'){
+				this.setAttribute('data-clicked','true');
+				this.style.background = "#232323";
+				messageDisplay.textContent = "Try Again"
+				score--;
+				scoreDisplay.textContent = score; 
+				localStorage.setItem('score', score);
+				//decrement win counter
+				winCount--;
 			}
 		} );
 	}
